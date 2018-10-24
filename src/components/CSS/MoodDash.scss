@@ -1,0 +1,42 @@
+@import 'Dashboard';
+.moodDash{
+    @extend %displayFlex;
+    @extend %background;
+    align-items: flex-start;
+    .moodDashCard{
+        @extend %displayFlex;
+        @extend %card;
+        width:25em;
+       
+    }
+    .DateChange{
+        @extend %displayFlex;
+        width:100%;
+        align-self: flex-start;
+    }
+    h1{
+        @extend %header;
+        @extend %cardHeader;
+        align-self: flex-start;
+    }
+    .box{
+        @extend %displayFlex;
+        height:2.1em;
+        width:2.1em;
+        border-radius: .2em;
+        margin:.5em;
+    }
+    .detailed{
+        width:90%;
+    }
+    .boxContainer{
+        @extend %displayFlex;
+        width:100%;
+    }
+    #Great{background:green;}  
+    #Good{background:lightgreen;} 
+    #Meh{background:rgb(236, 238, 143);}
+    #Bleh{background: plum;}
+    #Bad{background:purple;}
+    #noData{background:rgb(207, 207, 207);}
+}
