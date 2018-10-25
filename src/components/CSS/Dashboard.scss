@@ -1,3 +1,4 @@
+        @import '~pretty-checkbox/src/pretty-checkbox.scss';
 %displayFlex{
     display:flex;
     flex-wrap:wrap;
@@ -29,9 +30,17 @@
     align-items: flex-start;
     background:white;
     height: 100%;
-    width: 300px;
+    width:24em;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
     margin:0 5% 5% 5%;
+}
+%button{
+    background-color:#B97EA3;
+    box-shadow: 3px 3px 10px -6px black;
+    height: 2em;
+    border-radius:.25em;
+    margin:.5em;
+    padding:.25em;
 }
 html{
     background-color: #88A4C5;
@@ -68,11 +77,40 @@ html{
     .activities{
         @extend %displayFlex;
         flex-wrap: wrap;
+        li{
+            margin:.5em;
+        }
+        input{
+            height:1em;
+            width:1em;
+            border: black solid;
+        }
+    }
+    #cardTitle{
+        opacity: .87;
+    }
+    button{
+        @extend %button;
+    }
+    #submitButton{
+        background-color: #B3C2D2;
+        color: black;
+        opacity:1;
+        width:10em;
     }
     .moodButtons{
+        width:3.5em;
+    }       
+    .moodInput{
+        opacity: .80;
         margin:.5em;
     }
-    .moodInput{
-        margin:.5em;
+    .habitCard{
+        h3{
+        opacity: .76;
+        }
+        button{
+        background-color: #B3C2D2;
+        }
     }
 }

@@ -16,6 +16,7 @@
     "node-sass": "^4.9.3",
     "nodemon": "^1.18.4",
     "passport": "^0.4.0",
+    "pretty-checkbox": "^3.0.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-firebaseui": "^3.1.2",

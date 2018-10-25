@@ -36,7 +36,6 @@ class Dashboard extends Component {
           <Link className="Link" to="/habits">
             Habits
           </Link>
-          <Link className = 'Link'to='/login'>Logout</Link>
         </div>
         <Mood className="moodCard" />
         <Habit className="moodCard" auth={this.props.firebase.auth} />

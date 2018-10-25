@@ -56,7 +56,7 @@ class Moods extends Component{
                 if(this.props.habitReducer.detailed){
                     newArr.push(<div className='box detailed' id='noData' key = {index++}><span>{loop.toString().slice(0,15)}</span></div>)
                 }else{
-                    newArr.push(<div className='box' id='noData' key = {index++} style={{width:32}}>{}</div>)
+                    newArr.push(<div className='box' id='noData' key = {index++} >{}</div>)
                 }
             }else{
                 newArr.push(this.applyColor(moods[dateIndex],index++,moodDates[dateIndex]))
@@ -76,8 +76,12 @@ class Moods extends Component{
                 <div className = 'moodDashCard'>
                     <h1>Moods</h1>
                     <DateChange/>
-                    <h4>Detailed view: </h4>
-                    <input id="details" type="checkbox" onChange={this.props.toggleDetailed} checked = {this.props.habitReducer.detailed}/>
+                    <div className='pretty p-default'>
+                        <input id="details" type="checkbox" onChange={this.props.toggleDetailed} checked = {this.props.habitReducer.detailed}/>
+                        <div className='state'>
+                            <label>Detailed view: </label>
+                        </div>
+                    </div>
                     <div className='boxContainer'>
                         {this.days(startDate,endDate,this.props.moodReducer.moodsArr)}
                     </div>

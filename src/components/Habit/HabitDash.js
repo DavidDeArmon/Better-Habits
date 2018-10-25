@@ -45,8 +45,12 @@ class Habits extends Component {
           <h1>Habits</h1>
           <div className="DateChange">
             <DateChange />
-            <h4>Detailed view: </h4>
-            <input id="details" type="checkbox" onChange={this.props.toggleDetailed} checked = {this.props.habitReducer.detailed}/>          
+            <div className='pretty p-default'>
+              <input id="details" type="checkbox" onChange={this.props.toggleDetailed} checked = {this.props.habitReducer.detailed}/>
+              <div className='state'>
+                <label>Detailed view: </label>
+              </div>
+            </div>    
           </div>
           <HabitDisplay />
         </div>

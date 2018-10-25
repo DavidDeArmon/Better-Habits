@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express"),
   session = require("express-session"),
   passport = require("passport"),
+  path = require('path'),
   app = express(),
   port = process.env.PORT || 3001,
   massive = require("massive"),
@@ -17,7 +18,8 @@ const express = require("express"),
     checkHabit,
     getHabitDays,
     createHabit,
-    updateHabit
+    updateHabit,
+    deleteHabit
   } = require("./habitController"),
   { json } = require("body-parser");
 
@@ -26,6 +28,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance => {
   app.set("db", dbInstance);
 });
 
+app.use(express.static(__dirname+'/../dist'))
 //endpoints
 app.post("/api/moods", insertMood);
 app.delete("/api/moods/:id", deleteTodaysMood);
@@ -38,6 +41,11 @@ app.post("/api/habits", recordHabit);
 app.post("/api/habits/check", checkHabit);
 app.post("/api/habits/newHabit", createHabit);
 app.put("/api/habits/:id", updateHabit);
+app.post("/api/habits/:id",deleteHabit)
+//Build endpoint
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'../dist/index.html'))
+})
 
 app.listen(port, () => {
   console.log("server is listening on port:", port);

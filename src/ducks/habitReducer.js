@@ -6,6 +6,7 @@ const CHECK_HABIT = "CHECK_HABIT";
 const GET_HABIT_DAYS = "GET_HABIT_DAYS";
 const CREATE_HABIT = "CREATE_HABIT";
 const UPDATE_HABIT = "UPDATE_HABIT";
+const DELETE_HABIT = 'DELETE_HABIT';
 const TOGGLE_DETAILED = 'TOGGLE_DETAILED';
 
 var getToday = () => {
@@ -49,6 +50,8 @@ export default function reducer(state = initialState, action) {
     case CREATE_HABIT + "_PENDING":
       return state;
     case UPDATE_HABIT + "_FULFILLED":
+      return { ...state, habits: action.payload.data };
+    case DELETE_HABIT + "_FULFILLED":
       return { ...state, habits: action.payload.data };
     case TOGGLE_DETAILED:
       return{...state,detailed:!state.detailed}
@@ -96,10 +99,16 @@ export function createHabit(uid, habit_name, habit_desc) {
       .catch(err => console.log(err))
   };
 }
-export function updateHabit(uid, habit_name, habit_desc) {
+export function updateHabit(habit_id, habit_name, habit_desc,uid) {
   return {
     type: UPDATE_HABIT,
-    payload: axios.put("/api/habits/" + uid, { habit_name, habit_desc })
+    payload: axios.put("/api/habits/" + habit_id, { habit_name, habit_desc,uid })
+  };
+}
+export function deleteHabit(uid, habit_id) {
+  return {
+    type: DELETE_HABIT,
+    payload: axios.post("/api/habits/" + uid, { habit_id })
   };
 }
 export function toggleDetailed(){

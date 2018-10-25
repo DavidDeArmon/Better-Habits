@@ -42,9 +42,18 @@ module.exports={
     },
     updateHabit(req,res){
         let db=req.app.get('db');
-        const {habit_name,habit_desc} = req.body;
+        const {habit_name,habit_desc,uid} = req.body;
         const {id} = req.params;
-        db.updateHabit([id,habit_name,habit_desc]).then((response)=>{
+        db.updateHabit([id,habit_name,habit_desc,uid]).then((response)=>{
+            res.status(200).send(response)
+        }).catch(err=>console.log(err))
+    },
+    deleteHabit(req,res){
+        let db=req.app.get('db');
+        const {habit_id} = req.body;
+        const {id} = req.params;
+        console.log(req.body,req.params)
+        db.deleteHabit([id,habit_id]).then((response)=>{
             res.status(200).send(response)
         }).catch(err=>console.log(err))
     }
