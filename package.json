@@ -34,7 +34,9 @@
     "start": "webpack-dev-server --hot --mode development",
     "build": "NODE_ENV=production webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish-demo": "npm run build && npm run deploy"
+    "publish-demo": "npm run build && npm run deploy",
+    "build-production": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors"
+
   },
   "eslintConfig": {
     "extends": "react-app"
