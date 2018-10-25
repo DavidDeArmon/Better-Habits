@@ -26,17 +26,17 @@ module.exports = {
         ]
     },
     plugins: [htmlWebpackPlugin,
-        new webpack.DefinePlugin({
-            PRODUCTION: JSON.stringify(true),
-            'process.env': {
-                  NODE_ENV: JSON.stringify(process.env.NODE_ENV||'development'),
-                  ENV: JSON.stringify(process.env.ENV),
-            }
-        }),
+        // new webpack.DefinePlugin({
+        //     PRODUCTION: JSON.stringify(true),
+        //     'process.env': {
+        //           NODE_ENV: JSON.stringify(process.env.NODE_ENV||'development'),
+        //           ENV: JSON.stringify(process.env.ENV),
+        //     }
+        // }),
         new webpack.ProvidePlugin({
             axios: "axios"
-        }),
-        new webpack.EnvironmentPlugin(['NODE_ENV']),
+        })
+        // new webpack.EnvironmentPlugin(['NODE_ENV']),
         ],
         
     resolve: {
