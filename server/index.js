@@ -28,7 +28,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance => {
   app.set("db", dbInstance);
 });
 
-app.use(express.static(path.join(__dirname,'../dist/index.html')))
+app.use(express.static(path.join(__dirname,'../dist')))
 //endpoints
 app.post("/api/moods", insertMood);
 app.delete("/api/moods/:id", deleteTodaysMood);
