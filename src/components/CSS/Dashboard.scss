@@ -114,3 +114,7 @@ html{
         }
     }
 }
+#icon{
+    @extend %displayFlex;
+    height:90%;
+}

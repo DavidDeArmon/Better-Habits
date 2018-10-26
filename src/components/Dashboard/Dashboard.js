@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Mood from "./Mood";
 import Habit from "./Habit";
+import Header from '../Header/Header'
 import "../CSS/Dashboard.scss";
 import { getHabits, checkHabit } from "../../ducks/habitReducer";
 import { connect } from "react-redux";
@@ -26,17 +27,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <div className="dashboardHeader">
-          <Link className="Link" to="/">
-            Dashboard
-          </Link>
-          <Link className="Link" to="/moods">
-            Moods
-          </Link>
-          <Link className="Link" to="/habits">
-            Habits
-          </Link>
-        </div>
+        <Header/>
         <Mood className="moodCard" />
         <Habit className="moodCard" auth={this.props.firebase.auth} />
       </div>

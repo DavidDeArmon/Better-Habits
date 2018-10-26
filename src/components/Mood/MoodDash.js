@@ -4,6 +4,7 @@ import {toggleDetailed} from '../../ducks/habitReducer'
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'
 import '../CSS/MoodDash.scss'
+import Header from '../Header/Header'
 import DateChange from '../DateChange/DateChange';
 
 
@@ -68,11 +69,7 @@ class Moods extends Component{
         const{startDate,endDate} = this.props.moodReducer
         return(
             <div className = 'moodDash'>
-                <div className='dashboardHeader'>
-                    <Link className="Link" to='/'>Dashboard</Link>
-                    <Link className="Link" to='/moods'>Moods</Link>
-                    <Link className="Link" to='/habits'>Habits</Link>
-                </div>
+                <Header/>
                 <div className = 'moodDashCard'>
                     <h1>Moods</h1>
                     <DateChange/>
