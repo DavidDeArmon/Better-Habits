@@ -6,10 +6,13 @@ import '../favicons/favicon'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-module.hot.accept('./App',()=>{
+
+if(process.env.NODE_ENV !== 'production'){
+    module.hot.accept('./App',()=>{
     const NextApp = require('./App').default;
     ReactDOM.render(<NextApp/>,document.getElementById('root'))
 })
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
