@@ -39,20 +39,20 @@ class Moods extends Component{
         }
     }
     days(startDay,endDay,moods){
-        var start = new Date(startDay)
-        var end= new Date(endDay)
-        var loop = new Date(start)
+        let start = new Date(startDay)
+        let end= new Date(endDay)
+        let loop = new Date(start)
         let index = 0
         let newArr=[]
-        let findMoodIndex = (element)=>{return element===`${loop}`}
+        function findMoodIndex(element){return element===`${loop}`}
         //creates array of dates from moods
-        let moodDates = moods.map(e=>`${new Date(e.date)}`)
+        let moodDates = moods.map(function(e){return `${new Date(e.date)}`})
            //loops through provided dates and fills in data found or not found
         while(loop<=end){
             var newDate = loop.setDate(loop.getDate()+1)
             loop= new Date(newDate)
             loop.setHours(0,0,0,0)
-            let dateIndex = moodDates.findIndex(e=>findMoodIndex(e))
+            let dateIndex = moodDates.findIndex(function(e){return findMoodIndex(e)})
             if(dateIndex===-1){
                 if(this.props.habitReducer.detailed){
                     newArr.push(<div className='box detailed' id='noData' key = {index++}><span>{loop.toString().slice(0,15)}</span></div>)
