@@ -27,13 +27,12 @@ module.exports = {
     },
     plugins: [htmlWebpackPlugin,
         new webpack.DefinePlugin({
-            PRODUCTION: JSON.stringify(true),
-                'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-
+            'process.env.NODE_ENV': JSON.stringify('production')
         }),
         new webpack.ProvidePlugin({
             axios: "axios"
-        })],        
+        })
+    ],
     resolve: {
         extensions: ["*",".js", ".jsx"]
     },
