@@ -1,21 +1,24 @@
 @import 'Dashboard';
 @import '~pretty-checkbox/src/pretty-checkbox.scss';
-
+ 
 .habitDash{
     @extend %displayFlex;
     @extend %background;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
+   
     .habitDashCard{
         @extend %displayFlex;
         @extend %card;
-        width:45em;
+        width:42em;
         .habitDisplay{
             @extend %displayFlex;
         }
         .habitCard{
             @extend %displayFlex;
             @extend %card;
+            margin-left:1em;
+            margin-right:1em;
             width:18em;
             margin-top: .2em;
             h2{
@@ -69,4 +72,11 @@
         width:40%;
         margin:1em
     }
+}
+.habitcontainer{
+     @extend %container;
+        .habitDashCard{
+            width:90%;
+        margin:0 0 1em 0 ;
+        }
 }

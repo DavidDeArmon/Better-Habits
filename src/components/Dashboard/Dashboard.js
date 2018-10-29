@@ -6,6 +6,7 @@ import Header from '../Header/Header'
 import "../CSS/Dashboard.scss";
 import { getHabits, checkHabit } from "../../ducks/habitReducer";
 import { connect } from "react-redux";
+import UserInfo from "./UserInfo";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -28,8 +29,11 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Header/>
-        <Mood className="moodCard" />
-        <Habit className="moodCard" auth={this.props.firebase.auth} />
+        <div className = 'container'>
+          <UserInfo/>
+          <Mood />
+        </div>
+        <Habit auth={this.props.firebase.auth} />
       </div>
     );
   }

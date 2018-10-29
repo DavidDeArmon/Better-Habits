@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: path.join(__dirname, "./public/index.html"),
@@ -16,8 +17,8 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                loader: "babel-loader",
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: ["babel-loader"],
             },
             {
                 test: /\.(scss|css)$/,
@@ -31,6 +32,11 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             axios: "axios"
+        }),
+        new WorkboxPlugin.GenerateSW({
+            swDest: 'sw.js',
+            clientsClaim: true,
+            skipWaiting: true,
         })
     ],
     resolve: {

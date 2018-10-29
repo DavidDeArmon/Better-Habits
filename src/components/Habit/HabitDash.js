@@ -44,8 +44,10 @@ class Habits extends Component {
           </div>
           <HabitDisplay />
         </div>
-        <NewHabit />
-        <EditHabits />
+        <div className='habitcontainer'>
+          <NewHabit />
+          <EditHabits />
+        </div>
       </div>
     );
   }

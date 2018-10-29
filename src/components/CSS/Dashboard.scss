@@ -1,4 +1,4 @@
-        @import '~pretty-checkbox/src/pretty-checkbox.scss';
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
 %displayFlex{
     display:flex;
     flex-wrap:wrap;
@@ -42,6 +42,15 @@
     margin:.5em;
     padding:.25em;
 }
+%container{
+    @extend %displayFlex;
+    flex-direction: column;
+    width:38em;
+    height:100%;
+    // margin: 0 5% 0 5%;
+    // padding: 0 5% 0 5%;
+
+}
 html{
     background-color: #88A4C5;
 }
@@ -49,7 +58,6 @@ html{
     @extend %displayFlex;
     @extend %background;
     align-items: baseline;
-   
 }
 .dashboardHeader{
     @extend %displayFlex;
@@ -67,6 +75,13 @@ html{
         height: 60%;
         border-right:1px solid black;
         border-left:1px solid black;
+    }
+}
+.container{
+    @extend %container;
+    .Card{
+        width:90%;
+        margin:0 0 1em 0 ;
     }
 }
 .Card{
@@ -105,7 +120,7 @@ html{
     }       
     .moodInput{
         opacity: .80;
-        margin:.5em;
+        margin:.5rem;
     }
     .habitCard{
         h3{
@@ -115,7 +130,20 @@ html{
         background-color: #B3C2D2;
         }
     }
+    .userCard{
+        @extend %displayFlex;
+        flex-direction: column;
+        .Link{
+            @extend %displayFlex;
+            @extend %button;
+            color:inherit;
+            text-decoration: none;
+            width:5.7em;
+            height: 60%;
+        }
+    }
 }
+
 #icon{
     @extend %displayFlex;
     height:90%;

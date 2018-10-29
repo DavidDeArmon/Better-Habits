@@ -2,10 +2,10 @@ import React,{Component} from 'react'
 import {getMoods} from '../../ducks/moodReducer'
 import {toggleDetailed} from '../../ducks/habitReducer'
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
 import '../CSS/MoodDash.scss'
 import Header from '../Header/Header'
 import DateChange from '../DateChange/DateChange';
+import Mood from '../Dashboard/Mood'
 
 
 class Moods extends Component{
@@ -70,6 +70,7 @@ class Moods extends Component{
         return(
             <div className = 'moodDash'>
                 <Header/>
+                <Mood/>
                 <div className = 'moodDashCard'>
                     <h1>Moods</h1>
                     <DateChange/>
