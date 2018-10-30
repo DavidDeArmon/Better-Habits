@@ -18,16 +18,16 @@ if(process.env.NODE_ENV !== 'production'){
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 // serviceWorker.unregister();
-// function init() {
-//   if ('serviceWorker' in navigator) {
-//     window.addEventListener('load', () => {
-//       navigator.serviceWorker.register('/sw.js').then(registration => {
-//         console.log('SW registered: ', registration);
-//         // registration.pushManager.subscribe({userVisibleOnly: true});
-//       }).catch(registrationError => {
-//         console.log('SW registration failed: ', registrationError);
-//       });
-//     });
-//   }
-// }
-// init()
+function init() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        // console.log('SW registered: ', registration);
+        // registration.pushManager.subscribe({userVisibleOnly: true});
+      }).catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+    });
+  }
+}
+init()

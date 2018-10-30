@@ -17,7 +17,7 @@ var getToday = () => {
 };
 //inital state
 const initialState = {
-  habits: [0],
+  habits: [],
   checkedHabits: [0],
   today: getToday(),
   recordedToday: false,
