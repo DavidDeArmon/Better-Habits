@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import '../favicons/favicon'
 // import * as serviceWorker from '../src/serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -12,6 +11,9 @@ if(process.env.NODE_ENV !== 'production'){
     const NextApp = require('./App').default;
     ReactDOM.render(<NextApp/>,document.getElementById('root'))
     })
+    
+}else if(process.env.NODE_ENV == 'production'){
+  init()
 }
 
 // If you want your app to work offline and load faster, you can change
@@ -30,4 +32,4 @@ function init() {
     });
   }
 }
-init()
+

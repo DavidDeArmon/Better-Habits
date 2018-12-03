@@ -13,9 +13,9 @@ class HabitDisplay extends Component {
       return element === `${loop}`;
     };
     //creates array of dates from habits with applicable id
-    let habitDates = habitDays.map(e => {
-      if (e.id === habitID) {
-        return `${new Date(e.date)}`;
+    let habitDates = habitDays.map(habit => {
+      if (habit.id === habitID) {
+        return `${new Date(habit.date)}`;
       } else {
         return null;
       }
@@ -25,7 +25,7 @@ class HabitDisplay extends Component {
       var newDate = loop.setDate(loop.getDate() + 1);
       loop = new Date(newDate);
       loop.setHours(0, 0, 0, 0);
-      let dateIndex = habitDates.findIndex(e => findHabitIndex(e));
+      let dateIndex = habitDates.findIndex(date => findHabitIndex(date));
       if (dateIndex === -1) {
           if(this.props.habitReducer.detailed){
             newArr.push(<div className="box" id="noData" key={index++}><>{loop.getMonth()+1}/{loop.getDate()}</></div>);

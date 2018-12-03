@@ -10,7 +10,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className="App">{routes}</div>
+          <div className="App">
+            {routes}
+          </div>
         </BrowserRouter>
       </Provider>
     );

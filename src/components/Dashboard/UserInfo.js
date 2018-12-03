@@ -11,7 +11,7 @@ render(){
                 <h1 className="Header">Welcome</h1>
                 <div className='userCard'>
                     <h2> Hello , {displayName}.</h2>
-                    <Link className='Link' to ='/login'>Log Out</Link>
+                    <Link className='Link' to ='/'>Log Out</Link>
                 </div>
             </div>
         )
@@ -21,7 +21,7 @@ render(){
                     <h1 className="Header">Welcome</h1>
                     <div className='userCard'>
                         <h2>You are not logged in</h2>
-                        <Link className='Link' to='/login' onClick={()=>firebase.auth().signOut()}>Log In</Link>
+                        <Link className='Link' to='/' onClick={()=>firebase.auth().signOut()}>Log In</Link>
                     </div>
                 </div>
            )
@@ -31,7 +31,7 @@ render(){
                     <h1 className="Header">Welcome</h1>
                     <div className='userCard'>
                         <h2>You are not logged in</h2>
-                        <Link className='Link' to='/login' onClick={()=>firebase.auth().signOut()}>Log In</Link>
+                        <Link className='Link' to='/' onClick={()=>firebase.auth().signOut()}>Log In</Link>
                     </div>
                 </div>
            )

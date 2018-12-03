@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
         <div className="dashboardHeader">
           <img id='icon' src='DavidsIconWhite.svg'/>
-          <Link className="Link" to="/">
+          <Link className="Link" to="/dashboard">
             Dashboard
           </Link>
           <Link className="Link" to="/moods">

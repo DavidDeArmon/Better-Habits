@@ -27,9 +27,6 @@ module.exports = {
         ]
     },
     plugins: [htmlWebpackPlugin,
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
         new webpack.ProvidePlugin({
             axios: "axios"
         }),
@@ -47,5 +44,13 @@ module.exports = {
         open:true,
         proxy:{"/api":"http://localhost:3001"},
         historyApiFallback: true
-    }
+    },
+    optimization: {
+        splitChunks: {
+            chunks:'initial'
+          },
+        runtimeChunk: {
+          name: "manifest"
+        }
+      }
 };
