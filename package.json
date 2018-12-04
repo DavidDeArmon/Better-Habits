@@ -34,7 +34,7 @@
     "webpack": "^4.22.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --mode development",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "jest",
     "publish-demo": "npm run build && npm run deploy",

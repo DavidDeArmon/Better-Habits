@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack')
-const WorkboxPlugin = require('workbox-webpack-plugin');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: path.join(__dirname, "./public/index.html"),
@@ -30,11 +30,11 @@ module.exports = {
         new webpack.ProvidePlugin({
             axios: "axios"
         }),
-        new WorkboxPlugin.GenerateSW({
-            swDest: 'sw.js',
-            clientsClaim: true,
-            skipWaiting: true,
-        })
+        // new WorkboxPlugin.GenerateSW({
+        //     swDest: 'sw.js',
+        //     clientsClaim: true,
+        //     skipWaiting: true,
+        // })
     ],
     resolve: {
         extensions: ["*",".js", ".jsx"]

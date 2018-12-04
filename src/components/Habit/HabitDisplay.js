@@ -3,59 +3,51 @@ import { connect } from "react-redux";
 import { habitDays, getHabits } from "../../ducks/habitReducer";
 
 class HabitDisplay extends Component {
-  days(startDay, endDay, habitDays, habitID) {
+  days(startDay, endDay, habitDays) {
     var start = new Date(startDay);
     var end = new Date(endDay);
-    var loop = new Date(start);
-    let index = 0;
-    let newArr = [];
-    let findHabitIndex = element => {
-      return element === `${loop}`;
-    };
-    //creates array of dates from habits with applicable id
-    let habitDates = habitDays.map(habit => {
-      if (habit.id === habitID) {
-        return `${new Date(habit.date)}`;
-      } else {
-        return null;
-      }
-    });
-    //loops through provided dates and fills in data found or not found
-    while (loop <= end) {
-      var newDate = loop.setDate(loop.getDate() + 1);
-      loop = new Date(newDate);
-      loop.setHours(0, 0, 0, 0);
-      let dateIndex = habitDates.findIndex(date => findHabitIndex(date));
-      if (dateIndex === -1) {
-          if(this.props.habitReducer.detailed){
-            newArr.push(<div className="box" id="noData" key={index++}><>{loop.getMonth()+1}/{loop.getDate()}</></div>);
+    let displayArr=[];
+    if(habitDays[0]){
+    newHabitDays = habitDays;
+      let newHabitDays = newHabitDays.map(habitEntry=>{
+         habitEntry.date = `${new Date(habitEntry.date)}`
+         return habitEntry.date
+      })
+      let j = 1
+        for(let i = start; i<=end;i.setDate(i.getDate()+1)){
+          if(newHabitDays.includes(`${i}`)){
+            if(this.props.habitReducer.detailed){
+              displayArr.push(<div className="box" id="dataFound" key={j}>{i.getMonth()+1}/{i.getDate()}</div>);
+            }else{
+               displayArr.push(<div className="box" id="dataFound" key={j}></div>);
+            }
           }else{
-            newArr.push(<div className="box" id="noData" key={index++}></div>);
+            if(this.props.habitReducer.detailed){
+              displayArr.push(<div className="box" id="noData" key={j}><>{i.getMonth()+1}/{i.getDate()}</></div>);
+            }else{
+              displayArr.push(<div className="box" id="noData" key={j}></div>);
+            }
           }
-      } else {
-          if(this.props.habitReducer.detailed){
-            newArr.push(<div className="box" id="dataFound" key={index++}>{loop.getMonth()+1}/{loop.getDate()}</div>);
-          }else{
-             newArr.push(<div className="box" id="dataFound" key={index++}></div>);
-          }
-      }
+          j++
+        }
     }
-    return newArr;
-  }
+      return displayArr;
+    }
   render() {
     var { habitDays, habits} = this.props.habitReducer;
     var {startDate,endDate} = this.props.moodReducer
     var habitDisplay = [];
     //establish array of subscribed habits and include the result of days function
     habits.forEach((habit, idx) => {
+      let arrOfHabitsByID = habitDays.data.filter(habitEntry=>habitEntry.habit_id===habit.id)
       habitDisplay.push(
         <div className="habitCard" key={idx}>
           <h2>{habit.habit_name}</h2>
-          {this.days(startDate, endDate, habitDays.data, habit.id)}
+          {this.days(startDate, endDate, arrOfHabitsByID)}
         </div>
       );
     });
     return <div className="habitDisplay">{habitDisplay}</div>;
-  }
-}
+  };
+};
 export default connect(state=>state,{habitDays,getHabits})(HabitDisplay)
