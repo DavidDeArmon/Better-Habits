@@ -19,8 +19,9 @@ class HabitDisplay extends Component {
           
           newHabitDays.forEach(day=>{
             console.log('day,i',day,i);
+            day.getDate()
             console.log('+day, +i',+day, +i);
-            if(+day === +i){
+            if(day.getDate() === i.getDate() && day.getMonth() === i.getMonth() && day.getFullYear()===i.getFullYear()){
               found = true;
               console.log('found',found);
             }
