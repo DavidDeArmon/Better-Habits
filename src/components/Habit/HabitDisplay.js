@@ -10,12 +10,18 @@ class HabitDisplay extends Component {
     if(habitDays[0]){
     newHabitDays = habitDays;
       let newHabitDays = newHabitDays.map(habitEntry=>{
-         habitEntry.date = `${new Date(habitEntry.date)}`
+         habitEntry.date = new Date(habitEntry.date)
          return habitEntry.date
       })
       let j = 1
         for(let i = start; i<=end;i.setDate(i.getDate()+1)){
-          if(newHabitDays.includes(`${i}`)){
+          let found = false;
+          newHabitDays.forEach(day=>{
+            if(+day === +i){
+              found = true;
+            }
+          })
+          if(found){
             if(this.props.habitReducer.detailed){
               displayArr.push(<div className="box" id="dataFound" key={j}>{i.getMonth()+1}/{i.getDate()}</div>);
             }else{
