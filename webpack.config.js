@@ -22,7 +22,7 @@ module.exports = {
                 use: ["style-loader", "css-loader","sass-loader"]
             },
             {
-                test: /\.(jpg|jpeg|gif|png|ico)$/,
+                test: /\.(jpg|jpeg|gif|png|ico|svg)$/,
                 exclude: /node_modules/,
                 loader:'file-loader?name=img/[path][name].[ext]&context=./app/images'
              },
