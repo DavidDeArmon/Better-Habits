@@ -41,30 +41,34 @@ class Moods extends Component{
     days(startDay,endDay,moods){
         let start = new Date(startDay)
         let end= new Date(endDay)
-        let loop = new Date(start)
-        let index = 0
-        let newArr=[]
-        function findMoodIndex(element){return element===`${loop}`}
         //creates array of dates from moods
-        let moodDates = moods.map(function(e){return `${new Date(e.date)}`})
-           //loops through provided dates and fills in data found or not found
-        while(loop<=end){
-            var newDate = loop.setDate(loop.getDate()+1)
-            loop= new Date(newDate)
-            loop.setHours(0,0,0,0)
-            let dateIndex = moodDates.findIndex(function(e){return findMoodIndex(e)})
-            if(dateIndex===-1){
-                if(this.props.habitReducer.detailed){
-                    newArr.push(<div className='box detailed' id='noData' key = {index++}><span>{loop.toString().slice(0,15)}</span></div>)
-                }else{
-                    newArr.push(<div className='box' id='noData' key = {index++} >{}</div>)
-                }
-            }else{
-                newArr.push(this.applyColor(moods[dateIndex],index++,moodDates[dateIndex]))
+        let moodDates = moods.map(singlemood=>new Date(singlemood.date))
+        //loops through provided dates and fills in data found or not found
+        let newArr=[]
+        let index = 0
+        let dateIndex;
+        for(let i = start; i<=end;i.setDate(i.getDate()+1)){
+          let found = false;
+          moodDates.forEach((day,idx)=>{
+            if(day.getDate() === i.getDate() && day.getMonth() === i.getMonth() && day.getFullYear()===i.getFullYear()){
+              found = true;
+              dateIndex = idx;
             }
+        })
+          let thisdate = `${i}`
+          if(!found){
+            if(this.props.habitReducer.detailed){
+                newArr.push(<div className='box detailed' id='noData' key = {index++}><span>{thisdate.slice(0,15)}</span></div>)
+            }else{
+                newArr.push(<div className='box' id='noData' key = {index++} >{}</div>)
+            }
+          }else{
+            newArr.push(this.applyColor(moods[dateIndex],index++,thisdate))
+          }
         }
         return newArr
     }
+   
     render(){
         const{startDate,endDate} = this.props.moodReducer
         return(

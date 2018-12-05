@@ -6,13 +6,14 @@ import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-if(process.env.NODE_ENV !== 'production'){
-    module.hot.accept('./App',()=>{
-    const NextApp = require('./App').default;
-    ReactDOM.render(<NextApp/>,document.getElementById('root'))
-    })
+// if(process.env.NODE_ENV !== 'production'){
+//     module.hot.accept('./App',()=>{
+//     const NextApp = require('./App').default;
+//     ReactDOM.render(<NextApp/>,document.getElementById('root'))
+//     })
     
-}else if(process.env.NODE_ENV == 'production'){
+// }else 
+if(process.env.NODE_ENV == 'production'){
   init()
 }
 

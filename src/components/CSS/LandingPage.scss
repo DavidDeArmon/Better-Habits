@@ -1,0 +1,39 @@
+@import 'Dashboard';
+
+
+.landing-page{
+  @extend %displayFlex;
+  height:100vh;
+  .header{
+    @extend %displayFlex;
+    @extend %header;
+    align-self: flex-start;
+    height: 18rem;
+    box-shadow: 0 3px 20px -6px black;
+    .title{
+      font-family:yesteryear, sans-serif;
+      font-size:4vh;
+      width:8rem;
+    }
+  }
+  .card{
+    @extend %displayFlex;
+    @extend %card;
+    align-self: flex-start;
+    height:40%;
+    width:48em;
+    padding:4em;
+    color:gray;
+    p{
+      font-size: 1.3em
+    }
+    .Link{
+        @extend %displayFlex;
+        @extend %button;
+        color:inherit;
+        text-decoration: none;
+        width:5.7em;
+        color:white;
+    }
+  }
+}
